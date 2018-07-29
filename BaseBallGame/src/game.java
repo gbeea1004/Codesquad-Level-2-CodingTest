@@ -81,13 +81,13 @@ public class game {
 	
 	// 숫자 비교
 	public static int compare(int[] computerArr, int[] userArr, int maxNum) {
-		int strick = 0;
-		int ball = 0;
-		for(int i=0; i<maxNum; i++) {
-			for(int j=0; j<maxNum; j++) {
-				if(i==j && (computerArr[i] == userArr[j])) strick++;
-				else if(computerArr[i] == userArr[j]) ball++;
-			}
+		int strick = 0, ball = 0;
+		String com= "";
+		for(int i=0; i < maxNum; i++)
+			com += computerArr[i];
+		for(int i=0; i < maxNum; i++) {
+			if(computerArr[i] == userArr[i]) strick++;
+			else if(com.contains(userArr[i] + "")) ball++; // contains : 문자열이 들어있는지 확인, userArr는 int 형이므로 문자열로 바꾸기 위해 ""
 		}
 		System.out.println(strick + " 스트라이크, " + ball + "볼");
 		return strick;
