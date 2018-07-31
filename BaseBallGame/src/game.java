@@ -41,10 +41,11 @@ public class game {
 	
 	//user 숫자 중복 체크
 	public static boolean userOverlap(int[] userArr, int maxNum) {
-		for(int i = 0; i < maxNum; i++) {
-			for(int j=0; j<i; j++) {
-				if(userArr[i]==userArr[j]) return true;
-			}
+		for(int i = 1; i < maxNum; i++) {
+			if(userArr[i] == userArr[i-1]) return true;
+		}
+		if(userArr[0] == userArr[maxNum-1]) {
+			return true;
 		}
 		return false;
 	}
