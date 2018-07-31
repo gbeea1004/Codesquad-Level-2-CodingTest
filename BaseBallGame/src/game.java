@@ -28,17 +28,20 @@ public class game {
 	// 컴퓨터 숫자 중복 체크
 	public static void comOverlap(int[] comArr, int maxNum) {
 		Random r = new Random(); // 컴퓨터 숫자 랜덤 생성
-		for(int i=0; i<maxNum; i++) {
+		for(int i = 0; i < maxNum; i++) {
 			comArr[i] = r.nextInt(10); // 0 ~ 9
-			for(int j=0; j<i; j++) {
-				if(comArr[i]==comArr[j]) i--; // 이전 단계로 돌아가 다시 랜덤 값 생성
+			if(i > 0 && (comArr[i] == comArr[i-1])) { // maxNum을 3 이상으로 하면 오류가 있긴하지만..
+				i--;
+				continue;
 			}
+			if(i == (maxNum - 1) && comArr[i] == comArr[0])
+				i--;
 		}
 	}
 	
 	//user 숫자 중복 체크
 	public static boolean userOverlap(int[] userArr, int maxNum) {
-		for(int i=0; i<maxNum; i++) {
+		for(int i = 0; i < maxNum; i++) {
 			for(int j=0; j<i; j++) {
 				if(userArr[i]==userArr[j]) return true;
 			}
